@@ -82,6 +82,20 @@ Short mode is ideal for status bars and widgets where space is limited.
 
 ## Widget Integration Examples
 
+### Argos (Gnome extension)
+
+```sh
+#!/bin/bash
+
+output=$(claude_usage_widget -s)
+full_output=$(claude_usage_widget)
+echo -n "$output"
+echo " | size=10 iconName=appointment-soon"
+echo "---"
+echo "$full_output"
+echo "Open web | iconName=applications-internet bash='xdg-open https://claude.ai/' terminal=false"
+```
+
 ### Waybar (Wayland)
 
 ```json
