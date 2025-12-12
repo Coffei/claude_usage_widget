@@ -29,6 +29,18 @@ defmodule ClaudeUsageWidget.Formatter do
     |> String.trim()
   end
 
+  def format(usage_data, :argos) do
+    short_output = format(usage_data, :short)
+    verbose_output = format(usage_data, :verbose)
+
+    """
+    #{short_output} | size=9 iconName=computer
+    ---
+    #{verbose_output}
+    """
+    |> String.trim()
+  end
+
   defp get_daily_usage(data) do
     get_in(data, ["five_hour", "utilization"]) || 0.0
   end

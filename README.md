@@ -75,10 +75,28 @@ claude_usage_widget -s
 
 Output:
 ```
-5h: 11.0% | 7d: 7.0%
+5h: 11.0% / 7d: 7.0%
 ```
 
 Short mode is ideal for status bars and widgets where space is limited.
+
+### Argos mode
+
+```bash
+claude_usage_widget --argos
+claude_usage_widget -a
+```
+
+Output:
+```
+5h: 11.0% / 7d: 7.0% | size=9 iconName=computer
+---
+5-hour usage:  11.0% (resets: 2025-12-12 14:59 UTC)
+Weekly usage:   7.0% (resets: 2025-12-17 07:59 UTC)
+Sonnet usage:   0.0% (no reset scheduled)
+```
+
+Argos mode outputs in the format expected by the [Argos GNOME extension](https://extensions.gnome.org/extension/1176/argos/), with a single API call (more efficient than combining short and verbose modes in a shell script).
 
 ## Widget Integration Examples
 
@@ -87,12 +105,7 @@ Short mode is ideal for status bars and widgets where space is limited.
 ```sh
 #!/bin/bash
 
-output=$(claude_usage_widget -s)
-full_output=$(claude_usage_widget)
-echo -n "$output"
-echo " | size=10 iconName=appointment-soon"
-echo "---"
-echo "$full_output"
+claude_usage_widget --argos
 echo "Open web | iconName=applications-internet bash='xdg-open https://claude.ai/' terminal=false"
 ```
 
