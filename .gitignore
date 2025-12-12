@@ -19,5 +19,8 @@ erl_crash.dump
 # Ignore package tarball (built via "mix hex.build").
 claude_usage_widget-*.tar
 
+# Ignore escript
+/claude_usage_widget
+
 # Temporary files, for example, from tests.
 /tmp/
