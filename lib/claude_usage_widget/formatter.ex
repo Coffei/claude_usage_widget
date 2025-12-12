@@ -9,7 +9,7 @@ defmodule ClaudeUsageWidget.Formatter do
     five_hour = format_percentage(get_daily_usage(usage_data))
     weekly = format_percentage(get_weekly_usage(usage_data))
 
-    "5h: #{five_hour} | 7d: #{weekly}"
+    "5h: #{five_hour} / 7d: #{weekly}"
   end
 
   def format(usage_data, :verbose) do
@@ -54,7 +54,7 @@ defmodule ClaudeUsageWidget.Formatter do
   end
 
   defp format_percentage(value) when is_number(value) do
-    :erlang.float_to_binary(value, decimals: 1) <> "%"
+    :erlang.float_to_binary(value, decimals: 0) <> "%"
   end
 
   defp format_percentage(_), do: "0.0%"
