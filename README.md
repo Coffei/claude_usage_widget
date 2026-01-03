@@ -98,6 +98,20 @@ Sonnet usage:   0.0% (no reset scheduled)
 
 Argos mode outputs in the format expected by the [Argos GNOME extension](https://extensions.gnome.org/extension/1176/argos/), with a single API call (more efficient than combining short and verbose modes in a shell script).
 
+### JSON mode (for Waybar)
+
+```bash
+claude_usage_widget --json
+claude_usage_widget -j
+```
+
+Output:
+```
+{"text": "...", "tooltip": "..."}
+```
+
+Where `text` contains short format and `tooltip` contains verbose format.
+
 ## Widget Integration Examples
 
 ### Argos (Gnome extension)
@@ -114,9 +128,10 @@ echo "Open web | iconName=applications-internet bash='xdg-open https://claude.ai
 ```json
 {
   "custom/claude": {
-    "exec": "claude_usage_widget -s",
+    "exec": "claude_usage_widget --json",
     "interval": 300,
-    "format": "Claude: {}"
+    "return-type": "json",
+    "tooltip": true
   }
 }
 ```
